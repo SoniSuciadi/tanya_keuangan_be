@@ -30,11 +30,7 @@ export class AiAgentService {
 
       const textResult = response?.data.output;
 
-      if (textResult.startsWith('[')) {
-        return JSON.parse(textResult);
-      } else {
-        return textResult.split('\n').filter((line) => line.trim() !== '');
-      }
+      return JSON.parse(textResult);
     } catch (error) {
       throw new Error(
         'Error while sending message to webhook: ' + error.message,
