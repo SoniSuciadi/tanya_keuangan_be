@@ -74,6 +74,7 @@ model chats {
 model orders {
   id             String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   user_id        String    @db.Uuid
+  order_id       String?
   package_id     String    @db.Uuid
   amount         Int
   payment_url    String?
