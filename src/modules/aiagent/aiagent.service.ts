@@ -67,7 +67,6 @@ export class AiAgentService {
     }
   }
   async getUserIdBySession(id: string) {
-    console.log('👻 ~ AiAgentService ~ getUserIdBySession ~ id:', id);
     const userId = await this.databaseService.db.one<{ id: string }>(
       'SELECT user_id AS "id" from sessions Where id=$<id>',
       { id },
