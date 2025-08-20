@@ -16,7 +16,6 @@ dotenv.config();
 dayjs.extend(utc);
 dayjs.locale('id');
 
-dotenv.config();
 class Application {
   private app: INestApplication;
   private readonly PORT = process.env.PORT || 3000;
@@ -49,12 +48,7 @@ class Application {
     this.app = await NestFactory.create(AppModule, {
       logger: ['debug', 'error', 'log', 'verbose', 'warn', 'fatal'],
     });
-    console.log({
-      origin: process.env.FE_ORIGIN?.split(',') || '*',
-      methods: 'GET,PATCH,POST,DELETE',
-      allowedHeaders: 'Content-Type, Accept, ClientPath, Authorization',
-      credentials: true,
-    });
+
     this.configureMiddleware();
     this.setupInterceptorsAndFilters();
     this.app.setGlobalPrefix('v1');
